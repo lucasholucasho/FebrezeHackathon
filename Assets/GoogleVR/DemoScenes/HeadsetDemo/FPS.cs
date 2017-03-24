@@ -53,6 +53,5 @@ public class FPS : MonoBehaviour {
     float currentFPS = 1.0f / Time.deltaTime;
     fps = Mathf.Lerp(fps, currentFPS, interp);
     text += Mathf.RoundToInt(fps) + "fps";
-    textField.text = text;
   }
 }
