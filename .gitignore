@@ -1,4 +1,6 @@
 FebrezeHackathonDocumentation/
+FebrezeBuild/
+*.apk
 *.mov
 Registration*.png
 # =============== #

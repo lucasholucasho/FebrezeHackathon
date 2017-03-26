@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(Collider))]
-public class EnvironmentRegulator : MonoBehaviour, IGvrGazeResponder {
+public class BeachRegulator : MonoBehaviour, IGvrGazeResponder {
 	private Vector3 startingPosition;
 	private static int GREEN = 1;
 	private static int AQUA = 2;
