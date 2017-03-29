@@ -4,8 +4,7 @@ using System.Collections;
 using UnityEngine.Networking;
 using System.Collections.Generic;
 
-[RequireComponent(typeof(Collider))]
-public class BeachRegulator : MonoBehaviour, IGvrGazeResponder {
+public class BeachRegulator : MonoBehaviour {
 	private Vector3 startingPosition;
 	private static int GREEN = 1;
 	private static int AQUA = 2;
@@ -17,7 +16,6 @@ public class BeachRegulator : MonoBehaviour, IGvrGazeResponder {
 	private int startIndex = 0;
 	void Start() {
 		startingPosition = transform.localPosition;
-		SetGazedAt(false);
 		System.Threading.Thread.Sleep(3000);
 		ChangeFebreze();
 		ChangeNest();
@@ -28,14 +26,6 @@ public class BeachRegulator : MonoBehaviour, IGvrGazeResponder {
 		if (GvrViewer.Instance.BackButtonPressed) {
 			Application.Quit();
 		}
-	}
-
-	public void SetGazedAt(bool gazedAt) {
-		GetComponent<Renderer>().material.color = gazedAt ? Color.green : Color.red;
-	}
-
-	public void ToggleVRMode() {
-		GvrViewer.Instance.VRModeEnabled = !GvrViewer.Instance.VRModeEnabled;
 	}
 
 	public void ToggleDistortionCorrection() {
@@ -57,23 +47,9 @@ public class BeachRegulator : MonoBehaviour, IGvrGazeResponder {
 		GvrViewer.Controller.directRender = !GvrViewer.Controller.directRender;
 	}
 
-	#region IGvrGazeResponder implementation
-	/// Called when the user is looking on a GameObject with this script,
-	/// as long as it is set to an appropriate layer (see GvrGaze).
-	public void OnGazeEnter() {
-		SetGazedAt(true);
-	}
-
-	/// Called when the user stops looking on the GameObject, after OnGazeEnter
-	/// was already called.
-	public void OnGazeExit() {
-		SetGazedAt(false);
-	}
-
-	/// Called when the viewer's trigger is used, between OnGazeEnter and OnGazeExit.
-	public void OnGazeTrigger() {
+	public void RestoreDevices() {
 		StartCoroutine(RestoreNest());
-		StartCoroutine (RestoreFebreze());
+		StartCoroutine(RestoreFebreze());
 	}
 
 	IEnumerator RestoreFebreze() {
@@ -144,6 +120,4 @@ public class BeachRegulator : MonoBehaviour, IGvrGazeResponder {
 			Debug.Log ("Temperature and hvac mode could not change");
 		}
 	}
-
-	#endregion
 }
