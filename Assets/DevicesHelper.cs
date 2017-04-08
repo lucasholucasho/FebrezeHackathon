@@ -17,6 +17,5 @@ public class DevicesHelper : MonoBehaviour {
 		else {
 			Debug.Log ("Temperature and hvac mode could not change");
 		}
-
 	}
 }
