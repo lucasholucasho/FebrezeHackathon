@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class IntroScene : MonoBehaviour {
 
@@ -17,6 +18,6 @@ public class IntroScene : MonoBehaviour {
 	}
 
 	public void ClickScene(int levelIndex) {
-		Application.LoadLevel (levelIndex);
+		SceneManager.LoadScene(levelIndex);
 	}
 }

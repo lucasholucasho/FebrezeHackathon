@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-
+using UnityEngine.SceneManagement;
 
 public class TakeHome : MonoBehaviour {
 
@@ -24,7 +24,7 @@ public class TakeHome : MonoBehaviour {
 
 	private IEnumerator RestorationWrapper() {
 		yield return StartCoroutine(RestoreNest ());
-		Application.LoadLevel (0);
+		SceneManager.LoadScene(0);
 	}
 
 	IEnumerator RestoreNest() {

@@ -5,10 +5,8 @@ using UnityEngine.Networking;
 using System.Collections.Generic;
 
 public class PhilzRegulator : MonoBehaviour {
-	private Vector3 startingPosition;
 
 	void Start() {
-		startingPosition = transform.localPosition;
 		System.Threading.Thread.Sleep(3000);
 		ChangeNest();
 	}
