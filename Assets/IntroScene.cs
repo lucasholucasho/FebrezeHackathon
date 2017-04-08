@@ -20,4 +20,3 @@ public class IntroScene : MonoBehaviour {
 		Application.LoadLevel (levelIndex);
 	}
 }
-
