@@ -44,16 +44,6 @@ public class BeachRegulator : MonoBehaviour {
 	}
 
 	IEnumerator ChangeNestHelper() {
-		byte[] myData = System.Text.Encoding.UTF8.GetBytes("{\"target_temperature_f\": 79, \"hvac_mode\": \"heat\"}");
-		UnityWebRequest www = UnityWebRequest.Put("https://developer-api.nest.com/devices/thermostats/Hluc73AxK2_cSWE0pOzopcLlBZ2DDRPz?auth=c.v4Bx7T27sQbK8UAYBqTK0Radej6QnhhjlxExZka697XEAD73xFiNJ5sNof7F1WtXcGwDmfydLvl0WHW0DcaIFzuwucBXrK3QlXkvBM8Bh8Sa1jWc3r8pslXHSCfOJuVRTparirKeaukHsiSR", myData);
-
-		yield return www.Send();
-
-		if(www.responseCode == 200) {
-			Debug.Log ("Temparature changed to 79 and hvac mode changed to heat");
-		}
-		else {
-			Debug.Log ("Temperature and hvac mode could not change");
-		}
+		return DevicesHelper.ChangeNestHelper ("79", "\"heat\"");
 	}
 }

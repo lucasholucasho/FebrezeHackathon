@@ -28,16 +28,6 @@ public class TakeHome : MonoBehaviour {
 	}
 
 	IEnumerator RestoreNest() {
-		byte[] myData = System.Text.Encoding.UTF8.GetBytes("{\"target_temperature_f\": 60, \"hvac_mode\": \"cool\"}");
-		UnityWebRequest www = UnityWebRequest.Put("https://developer-api.nest.com/devices/thermostats/Hluc73AxK2_cSWE0pOzopcLlBZ2DDRPz?auth=c.v4Bx7T27sQbK8UAYBqTK0Radej6QnhhjlxExZka697XEAD73xFiNJ5sNof7F1WtXcGwDmfydLvl0WHW0DcaIFzuwucBXrK3QlXkvBM8Bh8Sa1jWc3r8pslXHSCfOJuVRTparirKeaukHsiSR", myData);
-
-		yield return www.Send();
-
-		if(www.responseCode == 200) {
-			Debug.Log ("Temparature changed to 60 and hvac mode changed to cool");
-		}
-		else {
-			Debug.Log ("Temperature and hvac mode could not change");
-		}
+		return DevicesHelper.ChangeNestHelper ("60", "\"cool\"");
 	}
 }
