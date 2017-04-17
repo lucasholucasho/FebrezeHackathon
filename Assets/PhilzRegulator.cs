@@ -10,7 +10,6 @@ public class PhilzRegulator : MonoBehaviour {
 		System.Threading.Thread.Sleep(3000);
 		AudioSource audio = GetComponent<AudioSource>();
 		audio.Play();
-		audio.Play(44100);
 		ChangeNest();
 	}
 
