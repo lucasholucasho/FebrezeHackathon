@@ -8,6 +8,9 @@ public class BeachRegulator : MonoBehaviour {
 
 	void Start() {
 		System.Threading.Thread.Sleep(3000);
+		AudioSource[] sounds = GetComponents<AudioSource> ();
+		AudioSource startBeachSounds = sounds[0];
+		startBeachSounds.Play();
 		ChangeNest();
 	}
 

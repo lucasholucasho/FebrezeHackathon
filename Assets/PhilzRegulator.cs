@@ -8,8 +8,9 @@ public class PhilzRegulator : MonoBehaviour {
 
 	void Start() {
 		System.Threading.Thread.Sleep(3000);
-		AudioSource audio = GetComponent<AudioSource>();
-		audio.Play();
+		AudioSource[] sounds = GetComponents<AudioSource> ();
+		AudioSource startPhilzSounds = sounds[0];
+		startPhilzSounds.Play();
 		ChangeNest();
 	}
 

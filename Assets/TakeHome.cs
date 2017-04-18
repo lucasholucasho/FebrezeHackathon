@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class TakeHome : MonoBehaviour {
 
-	bool insideOtherButton = false;
-
 	// Use this for initialization
 	void Start () {
 		
@@ -15,7 +13,10 @@ public class TakeHome : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetButtonDown("Fire1") && insideOtherButton == false) {
+		if(Input.GetButtonDown("Fire1")) {
+			AudioSource[] sounds = GetComponents<AudioSource> ();
+			AudioSource stopEchoSound = sounds[1];
+			stopEchoSound.Play();
 			RestoreDevicesAndLevel ();
 		}
 	}
@@ -31,13 +32,5 @@ public class TakeHome : MonoBehaviour {
 
 	IEnumerator RestoreNest() {
 		return DevicesHelper.ChangeNestHelper ("60", "\"cool\"");
-	}
-
-	public void OnMouseEnter() {
-		insideOtherButton = true;
-	}
-
-	public void OnMouseExit() {
-		insideOtherButton = false;
 	}
 }

@@ -8,6 +8,9 @@ public class MountainRegulator : MonoBehaviour {
 
 	void Start() {
 		System.Threading.Thread.Sleep(3000);
+		AudioSource[] sounds = GetComponents<AudioSource> ();
+		AudioSource startMountainSounds = sounds[0];
+		startMountainSounds.Play();
 		ChangeNest();
 	}
 
